@@ -12,12 +12,37 @@
             <p class="Title">
                 Indian5000
             </p>
-            <p class="OS">
+            <p class="OS" id="welcomeopen">
                 404 OS
             </p>
         </div>
+        <div id="desktopApps">
+            <div class="DesktopIcon" id="notesIcon">
+                <img src="../Content/your-app-icon.png" alt="App icon">
+                <p>Notes</p>
+            </div>
+        </div>
+        <div id="notes" class="window" style="display:none;">
+            <div id="notesheader" class="windowheader">
+                <p class="headertext">Notes</p>
+                <button id="notesclose" class="CloseButton">✕</button>
+            </div>
+            <div class="windowcontent">
+                <div id="sidebar"></div>
+                <div id="noteContent"></div>
+            </div>
+        </div>
         <div class="Welcome">
-            <div class="Welcome_div">
+            <div id="welcome" class="Welcome_div">
+                <div id="welcomeheader" class="WindowHandle">
+                    <div class="WindowDots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <span class="WindowTitle">welcome.exe</span>
+                    <button id="welcomeclose" class="CloseButton">✕</button>
+                </div>
                 <div class="welcome_div_Img">
                     <img src="../Content/arch-linux-logo-olinuxino-linux-removebg-preview.png">
                 </div>

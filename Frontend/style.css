@@ -48,6 +48,22 @@ body {
     border: none;
     cursor: pointer;
 }
+.Welcome_div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 820px;
+    min-height: 420px;
+    overflow: hidden;
+    border-radius: 16px;
+    background: rgba(20, 25, 35, 0.78);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,.08);
+    box-shadow:
+        0 10px 40px rgba(0,0,0,.45),
+        0 0 30px rgba(127,37,236,.15);
+}
 .TopBar{
     display:flex;
     justify-content:space-between;
@@ -83,4 +99,95 @@ body {
     padding: 4px 10px;
     border-radius: 10px;
     backdrop-filter: blur(12px);
+}
+.WindowHandle {
+    display: flex;
+    align-items: center;
+    height: 34px;
+    padding: 0 12px;
+    border-bottom: 1px solid rgba(255,255,255,.12);
+    cursor: move;
+    user-select: none;
+}
+.WindowTitle {
+    color: white;
+    font-size: 14px;
+    letter-spacing: 1px;
+
+    margin-left: 10px;
+}
+.WindowDots {
+    display: flex;
+    gap: 8px;
+}
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+.red {
+    background: #ff5f56;
+}
+
+.yellow {
+    background: #ffbd2e;
+}
+
+.green {
+    background: #27c93f;
+}
+.WindowLeft {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.WindowContent {
+    padding: 20px;
+    display: flex;
+}
+.CloseButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+#desktopApps {
+    position: absolute;
+    top: 64px;
+    left: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.DesktopIcon {
+    width: 92px;
+    text-align: center;
+    padding: 12px;
+    border-radius: 16px;
+    cursor: pointer;
+    user-select: none;
+}
+.DesktopIcon img {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: block;
+    margin: 0 auto 6px auto;
+}
+.DesktopIcon.selected {
+    background: rgba(255,255,255,0.16);
+    outline: 1px solid rgba(255,255,255,0.35);
+}
+.window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.windowheader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: grab;
+    user-select: none;
 }
