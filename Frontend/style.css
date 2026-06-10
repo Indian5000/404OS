@@ -8,7 +8,6 @@ body {
     display: flex;
     margin: 0px;
 }
-.back67 img{position: fixed;top:50%;left:50%; z-index:-1;transform: translate(-50%,-50%); height: 100%; width: auto; object-fit: cover;}
 .Welcome_div {
     position: absolute;
     top: 50%;
@@ -24,7 +23,7 @@ body {
     padding: 20px;
     h3 {white-space: nowrap; color:#ffffff; text-shadow:2px 2px 4px #000000;}
     sub {color: white}
-    a {color: #851c76; font:bolder; text-shadow: 1px 1px 1px #000;}
+    a {color: #7b66a0; font:bolder; text-shadow: 1px 1px 1px #000;}
     p {color:#ffffff; font: bold; text-shadow: 2px 2px 2px #000000;}
     h1 {white-space: nowrap; color:#7f25ec; text-shadow:2px 2px 4px #000000;}
     h2 {color: rgb(0, 255, 234);text-shadow:2px 2px 0px #000000 }
@@ -87,6 +86,8 @@ body {
     font-size: large;
     color: #ffffff;
     background-color: #00000044;
+    margin-left: auto;
+    margin-right:42%;
     padding: 4px 10px;
     border-radius: 10px;
     backdrop-filter: blur(12px);
@@ -113,7 +114,6 @@ body {
     color: white;
     font-size: 14px;
     letter-spacing: 1px;
-
     margin-left: 10px;
 }
 .WindowDots {
@@ -125,17 +125,9 @@ body {
     height: 12px;
     border-radius: 50%;
 }
-.red {
-    background: #ff5f56;
-}
-
-.yellow {
-    background: #ffbd2e;
-}
-
-.green {
-    background: #27c93f;
-}
+.red {background: #ff5f56;}
+.yellow {background: #ffbd2e;}
+.green {background: #27c93f;}
 .WindowLeft {
     display: flex;
     align-items: center;
@@ -151,43 +143,183 @@ body {
     cursor: pointer;
     color: white;
 }
-#desktopApps {
-    position: absolute;
-    top: 64px;
-    left: 16px;
+.DeskApp1{
+    height: 170px;
+    width:135px;
+    align-items: center;
+    position:absolute;
+    margin-top: 80px;
+    margin-left: 10px;
+    background-color: #4848486d;
+    color: white;
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+    p{margin:1px; padding-left:3px;}
+}
+.DeskApp1.selected {
+    outline: 2px solid rgba(127, 37, 236, 0.8);
+    background-color: rgba(127, 37, 236, 0.25);
+}
+/*Note Not Found(App incase you got confused)*/
+.NoteApp_div {
+    width: 760px;
+    min-height: 460px;
+    height: 460px;
+    top: 55%;
+    left: 55%;
+}
+.NoteApp_body {
+    display: flex;
+    height: calc(100% - 34px);
+    min-height: 426px;
+}
+.NoteApp_sidebar {
+    width: 210px;
+    min-width: 210px;
+    border-right: 1px solid rgba(255,255,255,.1);
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    background: rgba(255,255,255,.03);
 }
-.DesktopIcon {
-    width: 92px;
-    text-align: center;
-    padding: 12px;
-    border-radius: 16px;
-    cursor: pointer;
-    user-select: none;
-}
-.DesktopIcon img {
-    width: 64px;
-    height: 64px;
-    border-radius: 16px;
-    display: block;
-    margin: 0 auto 6px auto;
-}
-.DesktopIcon.selected {
-    background: rgba(255,255,255,0.16);
-    outline: 1px solid rgba(255,255,255,0.35);
-}
-.window {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.windowheader {
+.NoteApp_sidebarTop {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    cursor: grab;
-    user-select: none;
+    padding: 14px 14px 10px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
 }
+.NoteApp_sidebarTitle {
+    color: rgba(255,255,255,.55);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+.NoteApp_newBtn {
+    background: rgba(127,37,236,.35);
+    border: 1px solid rgba(127,37,236,.5);
+    color: #fff;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .2s;
+}
+.NoteApp_newBtn:hover { background: rgba(127,37,236,.6); }
+.NoteApp_list {
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+    overflow-y: auto;
+    flex: 1;
+}
+.NoteApp_list::-webkit-scrollbar { width: 4px; }
+.NoteApp_list::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,.12);
+    border-radius: 4px;
+}
+.NoteApp_listItem {
+    padding: 10px 14px;
+    cursor: pointer;
+    border-radius: 8px;
+    margin: 2px 6px;
+    transition: background .15s;
+}
+.NoteApp_listItem:hover { background: rgba(255,255,255,.06); }
+.NoteApp_listItem.active { background: rgba(127,37,236,.25); }
+.NoteApp_listItem_title {
+    color: rgba(255,255,255,.88);
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 3px;
+}
+.NoteApp_listItem_preview {
+    color: rgba(255,255,255,.35);
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.NoteApp_editor {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+}
+.NoteApp_titleInput {
+    background: none;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: .5px;
+    padding: 16px 20px 14px;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+.NoteApp_titleInput::placeholder { color: rgba(255,255,255,.2); }
+.NoteApp_bodyInput {
+    flex: 1;
+    background: none;
+    border: none;
+    color: rgba(255,255,255,.8);
+    font-size: 13.5px;
+    line-height: 1.7;
+    padding: 16px 20px;
+    resize: none;
+    outline: none;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+.NoteApp_bodyInput::placeholder { color: rgba(255,255,255,.18); }
+.NoteApp_editorFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 20px;
+    border-top: 1px solid rgba(255,255,255,.07);
+}
+.NoteApp_timestamp {
+    color: rgba(255,255,255,.25);
+    font-size: 11px;
+}
+.NoteApp_deleteBtn {
+    background: none;
+    border: 1px solid rgba(255,80,80,.3);
+    color: rgba(255,100,100,.7);
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all .2s;
+}
+.NoteApp_deleteBtn:hover {
+    background: rgba(255,80,80,.15);
+    color: rgba(255,120,120,1);
+}
+.NoteApp_deleteBtn:disabled {
+    opacity: .3;
+    cursor: default;
+    pointer-events: none;
+}
+.NoteApp_empty {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,.18);
+    font-size: 13px;
+    letter-spacing: .5px;
+    flex-direction: column;
+    gap: 8px;
+}
+.NoteApp_empty span { font-size: 30px; }
