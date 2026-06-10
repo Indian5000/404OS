@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Indian5000</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap");
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #0b0d14;
+            --surface: rgba(20, 25, 38, 0.72);
+            --border: rgba(255, 255, 255, 0.07);
+            --purple: #7f25ec;
+            --purple-lo: rgba(127, 37, 236, 0.15);
+            --purple-mid: rgba(127, 37, 236, 0.35);
+            --text: rgba(255, 255, 255, 0.88);
+            --muted: rgba(255, 255, 255, 0.42);
+            --dim: rgba(255, 255, 255, 0.18);
+            --mono: "Space Mono", monospace;
+            --sans: "Space Grotesk", sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── ambient glow ── */
+        body::before {
+            content: "";
+            position: fixed;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 700px;
+            height: 500px;
+            background: radial-gradient(ellipse,
+                    rgba(127, 37, 236, 0.18) 0%,
+                    transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── layout ── */
+        .page {
+            position: relative;
+            z-index: 1;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+
+        /* ── hero ── */
+        .hero {
+            margin-bottom: 56px;
+        }
+
+        .hero-label {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: var(--purple);
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .hero-name {
+            font-size: clamp(36px, 6vw, 58px);
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.05;
+            background: linear-gradient(120deg, #fff 30%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 14px;
+        }
+
+        .hero-tagline {
+            font-size: 15px;
+            color: var(--muted);
+            font-weight: 400;
+            max-width: 480px;
+            line-height: 1.6;
+        }
+
+        .hero-divider {
+            margin-top: 32px;
+            height: 1px;
+            background: linear-gradient(90deg, var(--purple-mid), transparent);
+        }
+
+        /* ── section ── */
+        .section {
+            margin-bottom: 48px;
+        }
+
+        .section-label {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: var(--purple);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-label::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ── skills ── */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            font-family: var(--mono);
+            font-size: 12px;
+            padding: 6px 14px;
+            border-radius: 6px;
+            background: var(--purple-lo);
+            border: 1px solid var(--purple-mid);
+            color: #c4b5fd;
+            letter-spacing: 0.5px;
+            transition:
+                background 0.2s,
+                transform 0.2s;
+        }
+
+        .skill-tag:hover {
+            background: var(--purple-mid);
+            transform: translateY(-2px);
+        }
+
+        /* ── projects ── */
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px 20px;
+            backdrop-filter: blur(12px);
+            transition:
+                border-color 0.2s,
+                box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--purple);
+            border-radius: 3px 0 0 3px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .project-card:hover {
+            border-color: rgba(127, 37, 236, 0.35);
+            box-shadow: 0 0 24px rgba(127, 37, 236, 0.1);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .project-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: 0.3px;
+        }
+
+        .project-badge {
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 1.5px;
+            padding: 2px 7px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-wip {
+            background: rgba(255, 189, 46, 0.1);
+            border: 1px solid rgba(255, 189, 46, 0.3);
+            color: #ffbd2e;
+        }
+
+        .badge-team {
+            background: rgba(39, 201, 63, 0.1);
+            border: 1px solid rgba(39, 201, 63, 0.3);
+            color: #27c93f;
+        }
+
+        .badge-done {
+            background: var(--purple-lo);
+            border: 1px solid var(--purple-mid);
+            color: #a78bfa;
+        }
+
+        .project-desc {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /* ── contact ── */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 12px;
+        }
+
+        .contact-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 16px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text);
+            transition:
+                border-color 0.2s,
+                background 0.2s;
+        }
+
+        .contact-card:hover {
+            border-color: var(--purple-mid);
+            background: rgba(127, 37, 236, 0.1);
+        }
+
+        .contact-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            background: var(--purple-lo);
+            border: 1px solid var(--purple-mid);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .contact-info-label {
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 1.5px;
+            color: var(--dim);
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        .contact-info-value {
+            font-size: 12px;
+            color: var(--text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* ── footer ── */
+        .footer {
+            margin-top: 64px;
+            text-align: center;
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--dim);
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <!-- Hero -->
+        <div class="hero">
+            <div class="hero-label">// about.exe</div>
+            <div class="hero-name">Indian5000</div>
+            <p class="hero-tagline">
+                Watchmaker. Hardware hacker. Builder of things that probably shouldn't
+                exist.
+            </p>
+            <div class="hero-divider"></div>
+        </div>
+        <!-- Skills -->
+        <div class="section">
+            <div class="section-label">Skills</div>
+            <div class="skills-grid">
+                <span class="skill-tag">Watchmaking</span>
+                <span class="skill-tag">Clockmaking</span>
+                <span class="skill-tag">Soldering</span>
+                <span class="skill-tag">Programming / Coding</span>
+                <span class="skill-tag">Hardware Cracking</span>
+            </div>
+        </div>
+        <!-- Projects -->
+        <div class="section">
+            <div class="section-label">Projects</div>
+            <div class="projects-list">
+                <div class="project-card">
+                    <div class="project-top">
+                        <span class="project-name">404 OS</span>
+                        <span class="project-badge badge-done">Live</span>
+                    </div>
+                    <p class="project-desc">
+                        A web-based operating system built entirely in the browser. The
+                        page you're reading this on.
+                    </p>
+                </div>
+                <div class="project-card">
+                    <div class="project-top">
+                        <span class="project-name">SysPulse</span>
+                        <span class="project-badge badge-wip">WIP</span>
+                    </div>
+                    <p class="project-desc">
+                        A server management dashboard designed and built for teens —
+                        making infrastructure legible without the enterprise jargon.
+                    </p>
+                </div>
+                <div class="project-card">
+                    <div class="project-top">
+                        <span class="project-name">Woman Protection Dashboard</span>
+                        <span class="project-badge badge-team">Team</span>
+                    </div>
+                    <p class="project-desc">
+                        An AI-powered CCTV analyzer using machine learning to detect hand
+                        signals and distress situations, automatically flagging incidents
+                        to authorities for verification and response.
+                    </p>
+                </div>
+                <div class="project-card">
+                    <div class="project-top">
+                        <span class="project-name">Project DNGR</span>
+                        <span class="project-badge badge-wip">WIP</span>
+                    </div>
+                    <p class="project-desc">
+                        A 1:1 open-source recreation of Double Negative's closed-source
+                        DNGR renderer — the engine behind the black hole visualisation in
+                        <em>Interstellar</em> — reverse-engineered entirely from publicly
+                        available documents.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Contact -->
+        <div class="section">
+            <div class="section-label">Contact</div>
+            <div class="contact-grid">
+                <a class="contact-card" href="https://github.com/Indian5000" target="_blank">
+                    <div class="contact-icon">⌥</div>
+                    <div>
+                        <div class="contact-info-label">GitHub</div>
+                        <div class="contact-info-value">Indian5000</div>
+                    </div>
+                </a>
+                <a class="contact-card" href="mailto:ahitagnibhattacharya072@gmail.com">
+                    <div class="contact-icon">✉</div>
+                    <div style="min-width:0">
+                        <div class="contact-info-label">Email</div>
+                        <div class="contact-info-value"
+                            style="font-size:10px; white-space:normal; word-break:break-all;">
+                            ahitagnibhattacharya072@gmail.com</div>
+                    </div>
+                </a>
+                <div class="contact-card">
+                    <div class="contact-icon">#</div>
+                    <div>
+                        <div class="contact-info-label">Discord</div>
+                        <div class="contact-info-value">indian5000</div>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">◈</div>
+                    <div>
+                        <div class="contact-info-label">Slack</div>
+                        <div class="contact-info-value">Indian5000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">404 OS · built by Indian5000</div>
+    </div>
+</body>
+
+</html>

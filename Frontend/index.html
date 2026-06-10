@@ -70,6 +70,51 @@
             </div>
         </div>
         </div>
+        <!-- Browser Window -->
+        <div id="browserapp" class="Welcome_div BrowserApp_div" style="display:none">
+        <div id="browserappheader" class="WindowHandle">
+            <div class="WindowDots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            </div>
+            <span class="WindowTitle">browser.exe</span>
+            <button id="browserappclose" class="CloseButton">✕</button>
+        </div>
+
+        <div class="BrowserApp_toolbar">
+            <button class="BrowserApp_navBtn" id="browserBack">&#8592;</button>
+            <button class="BrowserApp_navBtn" id="browserForward">&#8594;</button>
+            <button class="BrowserApp_navBtn" id="browserRefresh">&#8635;</button>
+            <input id="browserUrlBar" class="BrowserApp_urlBar" type="text" placeholder="Enter a URL…" />
+            <button class="BrowserApp_goBtn" id="browserGo">Go</button>
+        </div>
+
+        <div class="BrowserApp_content">
+            <iframe id="browserFrame" class="BrowserApp_frame"></iframe>
+            <div id="browserError" class="BrowserApp_error" style="display:none">
+            <span>🚫</span>
+            <p>This site blocked loading inside a browser app.<br/>Try a different URL.</p>
+            </div>
+            <div id="browserHome" class="BrowserApp_home">
+                <span>🌐</span>
+                <p>404 OS Browser</p>
+                <small>Enter a URL above and hit Go</small>
+            </div>
+        </div>
+        </div>
+<!-- Desktop Icon -->
+        <div id="BrowserIcon" class="DeskApp1" onclick="handleIconTap(this)" style="margin-top:270px;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <circle cx="256" cy="256" r="210" fill="#1565c0"/>
+            <circle cx="256" cy="256" r="210" fill="none" stroke="#90caf9" stroke-width="12"/>
+            <ellipse cx="256" cy="256" rx="85" ry="210" fill="none" stroke="#90caf9" stroke-width="12"/>
+            <line x1="46" y1="256" x2="466" y2="256" stroke="#90caf9" stroke-width="12"/>
+            <line x1="256" y1="46" x2="256" y2="466" stroke="#90caf9" stroke-width="12"/>
+            <path d="M80 160 Q256 200 432 160M80 352 Q256 312 432 352" fill="none" stroke="#90caf9" stroke-width="12"/>
+        </svg>
+        <p style=" padding-left: 15px">404 Browser</p>
+        </div>
         <script src="script.js"></script>
     </body>
 </html>

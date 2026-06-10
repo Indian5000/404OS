@@ -89,6 +89,7 @@ function openAppWindow(iconElement) {
   const appMap = {
     "Desktop App1": noteAppWindow,
     "welcomeicon":  welcomeWindow,
+    "BrowserIcon":  browserAppWindow,
   };
   const win = appMap[iconElement.id];
   if (win) showWindow(win);
@@ -190,3 +191,38 @@ noteTitleInput.addEventListener("input", updateActiveNote);
 noteBodyInput.addEventListener("input", updateActiveNote);
 if (notes.length > 0) loadNote(notes[0].id);
 else showEmptyEditor();
+//Browser App
+dragElement(document.getElementById("browserapp"));
+const browserAppWindow  = document.querySelector("#browserapp");
+const browserAppClose   = document.querySelector("#browserappclose");
+const browserFrame      = document.getElementById("browserFrame");
+const browserUrlBar     = document.getElementById("browserUrlBar");
+const browserGo         = document.getElementById("browserGo");
+const browserBack       = document.getElementById("browserBack");
+const browserForward    = document.getElementById("browserForward");
+const browserRefresh    = document.getElementById("browserRefresh");
+const browserError      = document.getElementById("browserError");
+const browserHome       = document.getElementById("browserHome");
+browserAppClose.addEventListener("click", () => hideWindow(browserAppWindow));
+function navigateTo(url) {
+  if (!url) return;
+  if (!/^https?:\/\//i.test(url) && !url.startsWith("./") && !url.startsWith("/")) {
+    url = "https://" + url;
+  }
+  browserUrlBar.value = url;
+  browserFrame.style.display = "none";
+  browserError.style.display = "none";
+  browserHome.style.display  = "none";
+  browserFrame.src = url;
+  browserFrame.style.display = "block";
+}
+browserGo.addEventListener("click", () => navigateTo(browserUrlBar.value));
+browserUrlBar.addEventListener("keydown", e => {
+  if (e.key === "Enter") navigateTo(browserUrlBar.value);
+});
+browserBack.addEventListener("click",    () => browserFrame.contentWindow?.history.back());
+browserForward.addEventListener("click", () => browserFrame.contentWindow?.history.forward());
+browserRefresh.addEventListener("click", () => {
+  if (browserFrame.src) browserFrame.src = browserFrame.src;
+});
+navigateTo("./about.html");

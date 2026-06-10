@@ -323,3 +323,93 @@ body {
     gap: 8px;
 }
 .NoteApp_empty span { font-size: 30px; }
+.BrowserApp_div {
+  width: 900px;
+  height: 560px;
+  top: 52%;
+  left: 52%;
+}
+
+.BrowserApp_toolbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.03);
+}
+
+.BrowserApp_navBtn {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  color: rgba(255,255,255,.7);
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s;
+}
+.BrowserApp_navBtn:hover { background: rgba(255,255,255,.14); }
+.BrowserApp_navBtn:disabled { opacity: .3; cursor: default; }
+
+.BrowserApp_urlBar {
+  flex: 1;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 13px;
+  padding: 6px 12px;
+  outline: none;
+  transition: border .2s;
+}
+.BrowserApp_urlBar:focus { border-color: rgba(127,37,236,.6); }
+.BrowserApp_urlBar::placeholder { color: rgba(255,255,255,.25); }
+
+.BrowserApp_goBtn {
+  background: rgba(127,37,236,.4);
+  border: 1px solid rgba(127,37,236,.6);
+  color: #fff;
+  padding: 6px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background .2s;
+}
+.BrowserApp_goBtn:hover { background: rgba(127,37,236,.65); }
+
+.BrowserApp_content {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 34px - 50px);
+}
+
+.BrowserApp_frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: none;
+}
+
+.BrowserApp_error,
+.BrowserApp_home {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: rgba(255,255,255,.35);
+  font-size: 14px;
+  text-align: center;
+}
+.BrowserApp_error span,
+.BrowserApp_home span { font-size: 40px; }
+.BrowserApp_error p,
+.BrowserApp_home p { margin: 0; color: rgba(255,255,255,.5); font-size: 15px; }
+.BrowserApp_home small { color: rgba(255,255,255,.25); font-size: 12px; }
